@@ -1,14 +1,14 @@
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const path = require('path');
-const mysql = require('mysql');
+// const mysql = require('mysql');
 
 const app = express();
 const PORT = 3000;
 
-// MySQL connection
+// MySQL connection - COMMENTED OUT for deployment without DB
+/*
 const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
@@ -20,6 +20,7 @@ db.connect(err => {
   if (err) throw err;
   console.log("✅ Connected to MySQL database");
 });
+*/
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session({
@@ -35,7 +36,8 @@ app.use((req, res, next) => {
 
 app.use(express.static(path.join(__dirname)));
 
-// POST /register
+// POST /register - COMMENTED OUT (DB code)
+/*
 app.post('/register', (req, res) => {
   const { name, email, password } = req.body;
   const sql = "INSERT INTO users (name, email, password) VALUES (?, ?, ?)";
@@ -50,8 +52,10 @@ app.post('/register', (req, res) => {
     res.redirect('/login.html');
   });
 });
+*/
 
-// POST /login
+// POST /login - COMMENTED OUT (DB code)
+/*
 app.post('/login', (req, res) => {
   const { email, password } = req.body;
   const sql = "SELECT * FROM users WHERE email = ? AND password = ?";
@@ -69,8 +73,9 @@ app.post('/login', (req, res) => {
     }
   });
 });
+*/
 
-// GET /user
+// GET /user - This depends on session, but OK to keep if you want
 app.get('/user', (req, res) => {
   if (req.session.user) {
     res.json({ name: req.session.user.name });
@@ -79,7 +84,8 @@ app.get('/user', (req, res) => {
   }
 });
 
-// GET /properties
+// GET /properties - COMMENTED OUT (DB code)
+/*
 app.get('/properties', (req, res) => {
   const sql = "SELECT * FROM properties";
   db.query(sql, (err, results) => {
@@ -87,8 +93,9 @@ app.get('/properties', (req, res) => {
     res.json(results);
   });
 });
+*/
 
-// POST /logout
+// POST /logout - session related, safe to keep
 app.post('/logout', (req, res) => {
   req.session.destroy(err => {
     if (err) return res.sendStatus(500);
