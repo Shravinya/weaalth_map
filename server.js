@@ -5,7 +5,7 @@ const path = require('path');
 // const mysql = require('mysql');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;  // Use environment port or 3000
 
 // MySQL connection - COMMENTED OUT for deployment without DB
 /*
@@ -34,7 +34,13 @@ app.use((req, res, next) => {
   next();
 });
 
+// Serve static files from root directory (make sure your HTML files are there)
 app.use(express.static(path.join(__dirname)));
+
+// Serve index.html on root URL (make sure index.html exists)
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
 
 // POST /register - COMMENTED OUT (DB code)
 /*
@@ -75,7 +81,7 @@ app.post('/login', (req, res) => {
 });
 */
 
-// GET /user - This depends on session, but OK to keep if you want
+// GET /user - session-based user info
 app.get('/user', (req, res) => {
   if (req.session.user) {
     res.json({ name: req.session.user.name });
@@ -95,7 +101,7 @@ app.get('/properties', (req, res) => {
 });
 */
 
-// POST /logout - session related, safe to keep
+// POST /logout - session destroy
 app.post('/logout', (req, res) => {
   req.session.destroy(err => {
     if (err) return res.sendStatus(500);
