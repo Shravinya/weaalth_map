@@ -2,9 +2,11 @@
 # 💰 Wealth Map – Visualizing Property & Wealth Distribution
 ## 🏆 Recognition
 
-Wealth Map was selected among the **Top 50 teams** in a prestigious innovation challenge for its **technical innovation, societal impact**, and **real-world applicability** in visualizing wealth and property data.
+> 🥇 **Top 50 Finalist – Student Tribe Competition**
 
-> 💡 *"Recognized for transforming raw, complex property data into intuitive, interactive visualizations that can drive real-world policy and planning."*
+Wealth Map was selected among the **Top 50 teams** in the **Student Tribe Competition** for its **technical excellence, innovative impact**, and **real-world applicability** in democratizing wealth and property data.
+
+> 💡 *"Recognized for empowering citizens, researchers, and governments to visualize and analyze wealth distribution with geospatial intelligence."*
 
 ---
 ## 🌐 Overview
@@ -63,6 +65,11 @@ This platform bridges the gap between **governments, researchers, and citizens**
 
 ---
 
+## deployment
+https://wealthmap-yuv5.onrender.com
+
+
+
 ## 💼 Use Cases
 
 - 🏙️ **Urban Planning**
@@ -97,7 +104,3 @@ Wealth Map transforms raw, siloed property data into **visual intelligence** for
 > _“We map the future of wealth!”_
 
 
-
-
-## deployment
-https://wealthmap-yuv5.onrender.com
